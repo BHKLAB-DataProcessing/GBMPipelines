@@ -1,0 +1,38 @@
+{
+    "pipeline": {
+      "name": "getGBM"
+    },
+    "transform": {
+      "image": "bhklab/pharmacogx2.0:v4",
+      "cmd": [
+        "Rscript", 
+        "/pfs/getGBM/getGBM.R"]
+      },
+    
+    "resource_requests": {
+      "memory": "8G"
+    },
+    "input": {
+      "cross": [
+        {
+          "git": {
+            "url": "https://github.com/BHKLAB-Pachyderm/getGBM.git",
+            "name": "",
+            "branch": "main"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "downAnnotations",
+            "glob": "/"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "downloadGBMData",
+            "glob": "/"
+          }
+        }
+      ]
+    }
+}
