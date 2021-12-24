@@ -7,10 +7,10 @@
       "cmd": [
         "Rscript", 
         "/pfs/getGBM/getGBM.R"]
-      },
-    
+      },  
     "resource_requests": {
-      "memory": "8G"
+      "memory": "8G",
+      "cpu": 1.0
     },
     "input": {
       "cross": [
