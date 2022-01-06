@@ -5,12 +5,13 @@
     "transform": {
       "image": "bhklab/pharmacogx2.0:v4",
       "cmd": [
-        "Rscript", 
-        "/pfs/getGBMMutation/getGBMMutation.R"]
-      },
-    
+            "Rscript", 
+            "/pfs/getGBMMutation/getGBMMutation.R"
+        ]
+    },
     "resource_requests": {
-      "memory": "8G"
+      "memory": "8G",
+      "cpu": 1.0
     },
     "input": {
       "cross": [
