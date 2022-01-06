@@ -1,0 +1,62 @@
+{
+    "pipeline": {
+      "name": "getGBMDrugScreen"
+    },
+    "transform": {
+      "image": "bhklab/pharmacogx2.0:v4",
+      "cmd": [
+        "Rscript", 
+        "/pfs/getGBMDrugScreen/getGBMDrugScreen.R"]
+      },
+    
+    "resource_requests": {
+      "memory": "8G"
+    },
+    "input": {
+      "cross": [
+        {
+          "git": {
+            "url": "https://github.com/BHKLAB-Pachyderm/getGBMDrugScreen.git",
+            "name": "",
+            "branch": "main"
+          }
+        },
+        {
+            "pfs": {
+                "repo": "downAnnotations",
+                "glob": "/"
+            }
+        },
+        {
+          "pfs": {
+                "repo": "downloadGBMData",
+                "glob": "/"
+          }
+        },
+        {
+            "pfs": {
+                "repo": "getGBMGeneExpression",
+                "glob": "/"
+            }
+        },
+        {
+            "pfs": {
+                "repo": "getGBMCNV",
+                "glob": "/"
+            }
+        },
+        {
+            "pfs": {
+                "repo": "getGBMMutation",
+                "glob": "/"
+            }
+        },
+        {
+            "pfs": {
+                "repo": "getGBMMethylation",
+                "glob": "/"
+            }
+        }
+      ]
+    }
+}

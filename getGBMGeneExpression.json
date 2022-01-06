@@ -1,0 +1,38 @@
+{
+    "pipeline": {
+      "name": "getGBMGeneExpression"
+    },
+    "transform": {
+      "image": "bhklab/pharmacogx2.0:v4",
+      "cmd": [
+        "Rscript", 
+        "/pfs/getGBMGeneExpression/getGBMGeneExpression.R"]
+      },
+    
+    "resource_requests": {
+      "memory": "4G"
+    },
+    "input": {
+      "cross": [
+        {
+          "git": {
+            "url": "https://github.com/BHKLAB-Pachyderm/getGBMGeneExpression.git",
+            "name": "",
+            "branch": "main"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "downloadGBMData",
+            "glob": "/"
+          }
+        },
+        {
+            "pfs": {
+              "repo": "getGBMCellData",
+              "glob": "/"
+            }
+        }
+      ]
+    }
+}

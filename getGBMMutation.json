@@ -1,12 +1,12 @@
 {
     "pipeline": {
-      "name": "getGBM"
+      "name": "getGBMMutation"
     },
     "transform": {
       "image": "bhklab/pharmacogx2.0:v4",
       "cmd": [
         "Rscript", 
-        "/pfs/getGBM/getGBM.R"]
+        "/pfs/getGBMMutation/getGBMMutation.R"]
       },
     
     "resource_requests": {
@@ -16,15 +16,9 @@
       "cross": [
         {
           "git": {
-            "url": "https://github.com/BHKLAB-Pachyderm/getGBM.git",
+            "url": "https://github.com/BHKLAB-Pachyderm/getGBMMutation.git",
             "name": "",
             "branch": "main"
-          }
-        },
-        {
-          "pfs": {
-            "repo": "downAnnotations",
-            "glob": "/"
           }
         },
         {
@@ -32,6 +26,12 @@
             "repo": "downloadGBMData",
             "glob": "/"
           }
+        },
+        {
+            "pfs": {
+              "repo": "getGBMCellData",
+              "glob": "/"
+            }
         }
       ]
     }

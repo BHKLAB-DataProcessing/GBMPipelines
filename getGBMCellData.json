@@ -1,0 +1,32 @@
+{
+    "pipeline": {
+      "name": "getGBMCellData"
+    },
+    "transform": {
+      "image": "bhklab/pharmacogx2.0:v4",
+      "cmd": [
+        "Rscript", 
+        "/pfs/getGBMCellData/getGBMCellData.R"]
+      },
+    
+    "resource_requests": {
+      "memory": "1G"
+    },
+    "input": {
+      "cross": [
+        {
+          "git": {
+            "url": "https://github.com/BHKLAB-Pachyderm/getGBMCellData.git",
+            "name": "",
+            "branch": "main"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "downloadGBMData",
+            "glob": "/"
+          }
+        }
+      ]
+    }
+}

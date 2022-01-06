@@ -1,0 +1,56 @@
+{
+    "pipeline": {
+      "name": "getGBMPSet"
+    },
+    "transform": {
+      "image": "bhklab/pharmacogx2.0:v4",
+      "cmd": [
+        "Rscript", 
+        "/pfs/getGBMPSet/getGBMPSet.R"]
+      },
+    
+    "resource_requests": {
+      "memory": "2G"
+    },
+    "input": {
+      "cross": [
+        {
+          "git": {
+            "url": "https://github.com/BHKLAB-Pachyderm/getGBMPSet.git",
+            "name": "",
+            "branch": "main"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "getGBMGeneExpression",
+            "glob": "/"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "getGBMCNV",
+            "glob": "/"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "getGBMMutation",
+            "glob": "/"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "getGBMMethylation",
+            "glob": "/"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "getGBMDrugScreen",
+            "glob": "/"
+          }
+        }
+      ]
+    }
+}

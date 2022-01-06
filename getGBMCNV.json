@@ -1,0 +1,38 @@
+{
+    "pipeline": {
+      "name": "getGBMCNV"
+    },
+    "transform": {
+      "image": "bhklab/pharmacogx2.0:v4",
+      "cmd": [
+        "Rscript", 
+        "/pfs/getGBMCNV/getGBMCNV.R"]
+      },
+    
+    "resource_requests": {
+      "memory": "4G"
+    },
+    "input": {
+      "cross": [
+        {
+          "git": {
+            "url": "https://github.com/BHKLAB-Pachyderm/getGBMCNV.git",
+            "name": "",
+            "branch": "main"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "downloadGBMData",
+            "glob": "/"
+          }
+        },
+        {
+            "pfs": {
+              "repo": "getGBMCellData",
+              "glob": "/"
+            }
+        }
+      ]
+    }
+}
